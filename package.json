@@ -1,0 +1,33 @@
+{
+  "name": "automation-with-cypress",
+  "version": "1.0.0",
+  "description": "This is for automation POC using cypress",
+  "main": "index.js",
+  "scripts": {
+    "open": "./node_modules/.bin/cypress open ",
+    "test": "./node_modules/.bin/cypress run ",
+    "chromeHeadless": "npm run test -- --browser chrome ",
+    "chromeHeaded": "npm run test -- --browser chrome --headed",
+    "junit-merge": "npx junit-merge -d cypress/results/junit -o cypress/results/junit/results.xml",
+    "delete-junit-report": "rm -rf cypress/results/junit/results.xml",
+    "delete-results": "rm -rf cypress/results/* || true",
+    "mochawesome-merge": "npx mochawesome-merge cypress/results/mochawesome/*.json > mochawesome.json && npx marge mochawesome.json",
+    "delete-mochawesome-report": "rm -rf mochawesome-report/* || true",
+    "smoketest": " npm run delete-results && npm run delete-mochawesome-report && npm run chromeHeaded && npm run mochawesome-merge"
+  },
+  "author": "Kamal Kumar",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^10.9.0",
+    "cypress-cucumber-preprocessor": "^4.3.1",
+    "cypress-multi-reporters": "^1.6.1",
+    "mocha": "^10.0.0",
+    "mocha-junit-reporter": "^2.1.0",
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^4.2.1",
+    "mochawesome-report-generator": "^6.2.0"
+  },
+  "dependencies": {
+    "speakeasy": "^2.0.0"
+  }
+}

@@ -1,0 +1,16 @@
+{
+    "validCredentials": {
+        "username": "Admin",
+        "password": "admin123",
+        "title":"Dashboard"    
+    },
+    "invalidCredentials": {
+        "username": "Admin",
+        "password": "admin1234",
+        "alertMessage": "Invalid credentials"
+    },
+    "forgotPassword": {
+        "confirmationMsg": "Reset Password link sent successfully",
+        "title":"Reset Password"
+    }
+}
