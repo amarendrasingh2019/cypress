@@ -1,12 +1,18 @@
 name: e2e-tests-on-manual-trigger
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Generate Release Number
+        id: version
+        run: echo "::set-output name=release_number::$(./generate_release_number.sh)"  # Replace with your script to generate the release number
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
           browser: chrome
+          releaseNumber: ${{ steps.version.outputs.release_number }}
